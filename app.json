@@ -1,8 +1,12 @@
 {
   "expo": {
+    "owner": "22664321k",
     "name": "Quizz",
     "slug": "Quizz",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "quizz",
@@ -43,6 +47,14 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    // eslint-disable-next-line expo/expo-properties
+    "projectId": "936304dd-1c82-49c9-bab6-73d755a043c8",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "936304dd-1c82-49c9-bab6-73d755a043c8"
+      }
     }
   }
 }
