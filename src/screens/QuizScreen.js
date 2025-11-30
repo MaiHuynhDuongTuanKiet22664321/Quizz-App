@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { clearProgress, loadProgress, saveProgress } from '../utils/progressManager';
 import { shuffleAnswers } from '../utils/shuffle';
 
 const questionsData = [
@@ -2379,35 +2381,93 @@ const QuizScreen = ({ navigation, route }) => {
   const [isAnswered, setIsAnswered] = useState(false);
   const [answerHistory, setAnswerHistory] = useState([]); // Thống kê đúng/sai
   const [wrongAnswers, setWrongAnswers] = useState([]); // Lưu câu trả lời sai
+  const [examSetId, setExamSetId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const { examSetId } = route.params || {};
+    setExamSetId(examSetId);
     
-    let questionsToUse = questionsData;
-    
-    // If examSetId is provided, use questions from that specific topic
-    if (examSetId) {
-      const topicRanges = {
-        1: { start: 0, end: 45 },   // Luật Hôn nhân và Gia đình
-        2: { start: 45, end: 80 },  // Luật Lao động  
-        3: { start: 80, end: 110 }, // Luật Hành chính
-        4: { start: 110, end: 142 }, // Luật Dân sự
-        5: { start: 142, end: 167 }, // Luật Hình sự
-        6: { start: 167, end: 197 }, // Luật Đất đai và Nhà ở
-        7: { start: 0, end: 197 }    // Bộ đề Tổng hợp - tất cả câu hỏi
-      };
+    const initializeQuiz = async () => {
+      setIsLoading(true);
       
-      const range = topicRanges[examSetId];
-      if (range) {
-        questionsToUse = questionsData.slice(range.start, Math.min(range.end, questionsData.length));
+      let questionsToUse = questionsData;
+      
+      // If examSetId is provided, use questions from that specific topic
+      if (examSetId) {
+        const topicRanges = {
+          1: { start: 0, end: 45 },   // Luật Hôn nhân và Gia đình
+          2: { start: 45, end: 80 },  // Luật Lao động  
+          3: { start: 80, end: 110 }, // Luật Hành chính
+          4: { start: 110, end: 142 }, // Luật Dân sự
+          5: { start: 142, end: 167 }, // Luật Hình sự
+          6: { start: 167, end: 197 }, // Luật Đất đai và Nhà ở
+          7: { start: 0, end: 197 }    // Bộ đề Tổng hợp - tất cả câu hỏi
+        };
+        
+        const range = topicRanges[examSetId];
+        if (range) {
+          questionsToUse = questionsData.slice(range.start, Math.min(range.end, questionsData.length));
+        }
       }
-    }
+      
+      const shuffledQuestions = shuffleQuestions(questionsToUse);
+      setQuestions(shuffledQuestions);
+      
+      // Load saved progress if exists
+      if (examSetId) {
+        const savedProgress = await loadProgress(examSetId);
+        if (savedProgress) {
+          setCurrentQuestionIndex(savedProgress.currentQuestionIndex);
+          setCorrectAnswers(savedProgress.correctAnswers);
+          setAnswerHistory(savedProgress.answerHistory || []);
+          setWrongAnswers(savedProgress.wrongAnswers || []);
+          
+          // Show alert to resume or restart
+          Alert.alert(
+            'Tiếp tục làm bài?',
+            `Bạn đã làm được ${savedProgress.currentQuestionIndex + 1}/${shuffledQuestions.length} câu hỏi. Bạn có muốn tiếp tục không?`,
+            [
+              {
+                text: 'Làm lại từ đầu',
+                onPress: () => {
+                  clearProgress(examSetId);
+                  setCurrentQuestionIndex(0);
+                  setCorrectAnswers(0);
+                  setAnswerHistory([]);
+                  setWrongAnswers([]);
+                  if (shuffledQuestions.length > 0) {
+                    setShuffledAnswers(shuffleAnswers(shuffledQuestions[0]));
+                  }
+                  setIsLoading(false);
+                }
+              },
+              {
+                text: 'Tiếp tục',
+                onPress: () => {
+                  if (shuffledQuestions.length > savedProgress.currentQuestionIndex) {
+                    setShuffledAnswers(shuffleAnswers(shuffledQuestions[savedProgress.currentQuestionIndex]));
+                  }
+                  setIsLoading(false);
+                }
+              }
+            ]
+          );
+        } else {
+          if (shuffledQuestions.length > 0) {
+            setShuffledAnswers(shuffleAnswers(shuffledQuestions[0]));
+          }
+          setIsLoading(false);
+        }
+      } else {
+        if (shuffledQuestions.length > 0) {
+          setShuffledAnswers(shuffleAnswers(shuffledQuestions[0]));
+        }
+        setIsLoading(false);
+      }
+    };
     
-    const shuffledQuestions = shuffleQuestions(questionsToUse);
-    setQuestions(shuffledQuestions);
-    if (shuffledQuestions.length > 0) {
-      setShuffledAnswers(shuffleAnswers(shuffledQuestions[0]));
-    }
+    initializeQuiz();
   }, [route.params]);
 
   const shuffleQuestions = (questionsArray) => {
@@ -2421,7 +2481,7 @@ const QuizScreen = ({ navigation, route }) => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  const handleAnswerPress = (answer) => {
+  const handleAnswerPress = async (answer) => {
     if (isAnswered) return;
 
     setSelectedAnswer(answer);
@@ -2437,9 +2497,11 @@ const QuizScreen = ({ navigation, route }) => {
       correctAnswer: questions[currentQuestionIndex]?.options[questions[currentQuestionIndex]?.answer]
     };
     
-    setAnswerHistory([...answerHistory, answerRecord]);
+    const newAnswerHistory = [...answerHistory, answerRecord];
+    setAnswerHistory(newAnswerHistory);
 
     // Lưu câu trả lời sai vào wrongAnswers
+    let newWrongAnswers = wrongAnswers;
     if (!answer.isCorrect) {
       const wrongQuestion = {
         id: questions[currentQuestionIndex]?.id,
@@ -2449,15 +2511,26 @@ const QuizScreen = ({ navigation, route }) => {
         explanation: questions[currentQuestionIndex]?.explanation,
         userAnswer: answer.text
       };
-      setWrongAnswers([...wrongAnswers, wrongQuestion]);
+      newWrongAnswers = [...wrongAnswers, wrongQuestion];
+      setWrongAnswers(newWrongAnswers);
     }
 
-    if (answer.isCorrect) {
-      setCorrectAnswers(correctAnswers + 1);
+    const newCorrectAnswers = answer.isCorrect ? correctAnswers + 1 : correctAnswers;
+    setCorrectAnswers(newCorrectAnswers);
+
+    // Save progress after each answer
+    if (examSetId) {
+      await saveProgress(
+        examSetId,
+        currentQuestionIndex,
+        newCorrectAnswers,
+        newAnswerHistory,
+        newWrongAnswers
+      );
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (currentQuestionIndex < questions.length - 1) {
       const nextIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(nextIndex);
@@ -2465,7 +2538,22 @@ const QuizScreen = ({ navigation, route }) => {
       setSelectedAnswer(null);
       setShowExplanation(false);
       setIsAnswered(false);
+
+      // Save progress when moving to next question
+      if (examSetId) {
+        await saveProgress(
+          examSetId,
+          nextIndex,
+          correctAnswers,
+          answerHistory,
+          wrongAnswers
+        );
+      }
     } else {
+      // Quiz completed - clear progress and navigate to results
+      if (examSetId) {
+        await clearProgress(examSetId);
+      }
       navigation.navigate('Result', {
         correctAnswers,
         totalQuestions: questions.length,
@@ -2503,7 +2591,7 @@ const QuizScreen = ({ navigation, route }) => {
     return styles.answerButtonText;
   };
 
-  if (questions.length === 0) {
+  if (questions.length === 0 || isLoading) {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.loadingText}>Đang tải câu hỏi...</Text>
@@ -2513,7 +2601,7 @@ const QuizScreen = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
       <View style={styles.content}>
         <View style={styles.progressContainer}>
           <Text style={styles.progressText}>
@@ -2579,6 +2667,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8fafc',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
   },
   content: {
     padding: 20,

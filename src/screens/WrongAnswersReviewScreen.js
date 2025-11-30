@@ -14,7 +14,7 @@ const WrongAnswersReviewScreen = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.title}>Ôn tập câu sai</Text>
@@ -99,6 +99,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8fafc',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
   },
   content: {
     padding: 20,

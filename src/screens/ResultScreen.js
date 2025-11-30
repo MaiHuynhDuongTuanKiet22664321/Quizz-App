@@ -41,7 +41,7 @@ const ResultScreen = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.content}>
           <View style={styles.resultContainer}>
             <Text style={styles.resultTitle}>Kết quả</Text>
@@ -129,6 +129,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8fafc',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,

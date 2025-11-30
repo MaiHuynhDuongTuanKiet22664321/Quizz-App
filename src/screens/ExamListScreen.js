@@ -86,7 +86,7 @@ const ExamListScreen = ({ navigation }) => {
         <Text style={styles.subtitle}>Chọn bộ đề để bắt đầu thi</Text>
       </View>
       
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
         {examSets.map((examSet) => (
           <TouchableOpacity
             key={examSet.id}
@@ -151,6 +151,8 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
+  },
+  scrollViewContent: {
     paddingHorizontal: 20,
     paddingTop: 16,
   },
