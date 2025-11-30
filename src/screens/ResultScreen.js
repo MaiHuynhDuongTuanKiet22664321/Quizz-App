@@ -1,8 +1,15 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const ResultScreen = ({ route, navigation }) => {
-  const { correctAnswers, totalQuestions } = route.params;
+  const { correctAnswers, totalQuestions, answerHistory, wrongAnswers } = route.params;
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+  
+  // Thống kê câu trả lời
+  const correctCount = answerHistory?.filter(answer => answer.isCorrect).length || correctAnswers;
+  const incorrectCount = (answerHistory?.length || 0) - correctCount;
+  
+  // Lấy các câu trả lời sai
+  const wrongQuestions = wrongAnswers || [];
   
   const getGradeMessage = () => {
     if (percentage >= 90) return 'Xuất sắc!';
@@ -28,16 +35,21 @@ const ResultScreen = ({ route, navigation }) => {
     navigation.navigate('Home');
   };
 
+  const handleReviewWrongAnswers = () => {
+    navigation.navigate('WrongAnswersReview', { wrongQuestions });
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.resultContainer}>
-          <Text style={styles.resultTitle}>Kết quả</Text>
-          
-          <View style={styles.scoreContainer}>
-            <Text style={styles.scoreText}>
-              {correctAnswers} / {totalQuestions}
-            </Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <View style={styles.content}>
+          <View style={styles.resultContainer}>
+            <Text style={styles.resultTitle}>Kết quả</Text>
+            
+            <View style={styles.scoreContainer}>
+              <Text style={styles.scoreText}>
+                {correctAnswers} / {totalQuestions}
+              </Text>
             <Text style={[styles.percentageText, { color: getGradeColor() }]}>
               {percentage}%
             </Text>
@@ -50,12 +62,12 @@ const ResultScreen = ({ route, navigation }) => {
 
         <View style={styles.statisticsContainer}>
           <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{correctAnswers}</Text>
+            <Text style={styles.statNumber}>{correctCount}</Text>
             <Text style={styles.statLabel}>Đúng</Text>
           </View>
           
           <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{totalQuestions - correctAnswers}</Text>
+            <Text style={styles.statNumber}>{incorrectCount}</Text>
             <Text style={styles.statLabel}>Sai</Text>
           </View>
           
@@ -64,6 +76,23 @@ const ResultScreen = ({ route, navigation }) => {
             <Text style={styles.statLabel}>Tổng số</Text>
           </View>
         </View>
+
+        {/* Lịch sử trả lời */}
+        {answerHistory && answerHistory.length > 0 && (
+          <View style={styles.historyContainer}>
+            <Text style={styles.historyTitle}>Chi tiết câu trả lời:</Text>
+            {answerHistory.map((answer, index) => (
+              <View key={index} style={styles.historyItem}>
+                <Text style={styles.historyQuestion}>Câu {index + 1}: {answer.question}</Text>
+                <Text style={styles.historySelected}>Bạn chọn: {answer.selectedAnswer}</Text>
+                <Text style={styles.historyCorrect}>Đáp án đúng: {answer.correctAnswer}</Text>
+                <View style={[styles.resultBadge, { backgroundColor: answer.isCorrect ? '#10b981' : '#ef4444' }]}>
+                  <Text style={styles.resultBadgeText}>{answer.isCorrect ? 'ĐÚNG' : 'SAI'}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
+        )}
 
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
@@ -79,9 +108,20 @@ const ResultScreen = ({ route, navigation }) => {
           >
             <Text style={styles.homeButtonText}>Về trang chủ</Text>
           </TouchableOpacity>
+          
+          {/* Nút ôn tập câu sai - chỉ hiển thị khi có câu sai */}
+          {wrongQuestions.length > 0 && (
+            <TouchableOpacity
+              style={[styles.button, styles.reviewButton]}
+              onPress={handleReviewWrongAnswers}
+            >
+              <Text style={styles.reviewButtonText}>Ôn tập câu sai ({wrongQuestions.length})</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
-    </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -197,13 +237,66 @@ const styles = StyleSheet.create({
   retakeButtonText: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   homeButtonText: {
     color: '#1e293b',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  historyContainer: {
+    width: '100%',
+    marginTop: 20,
+    maxHeight: 300,
+  },
+  historyTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1e293b',
+    marginBottom: 12,
+  },
+  historyItem: {
+    backgroundColor: '#ffffff',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+  },
+  historyQuestion: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#1e293b',
+    marginBottom: 4,
+  },
+  historySelected: {
+    fontSize: 13,
+    color: '#64748b',
+    marginBottom: 2,
+  },
+  historyCorrect: {
+    fontSize: 13,
+    color: '#10b981',
+    marginBottom: 4,
+  },
+  resultBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+  },
+  resultBadgeText: {
+    color: '#ffffff',
+    fontSize: 11,
     fontWeight: 'bold',
   },
+  reviewButton: {
+    backgroundColor: '#f59e0b',
+  },
+  reviewButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
-
 export default ResultScreen;

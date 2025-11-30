@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { shuffleAnswers } from '../utils/shuffle';
 
 const questionsData = [
@@ -1814,10 +1814,562 @@ const questionsData = [
     ],
     "answer": 1,
     "explanation": "**Hợp đồng lao động không xác định thời hạn** là hợp đồng mà trong đó hai bên không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng (Khoản 1 Điều 20 Bộ luật Lao động 2019)."
-  }
+  },
+  {
+        "id": "112",
+        "question": "Ngành luật nào được xem là ngành luật độc lập, cơ bản, chủ đạo trong hệ thống pháp luật Việt Nam?",
+        "options": [
+            "Luật Dân sự",
+            "Luật Lao động",
+            "Luật Hiến pháp",
+            "Luật Hình sự"
+        ],
+        "answer": 2,
+        "explanation": "Luật Hiến pháp được xác định là ngành luật độc lập, cơ bản, chủ đạo trong hệ thống pháp luật Việt Nam."
+    },
+    {
+        "id": "113",
+        "question": "Hệ thống pháp luật là gì?",
+        "options": [
+            "Là tổng thể các quy phạm pháp luật được ban hành theo trình tự, thủ tục luật định.",
+            "Là tổng thể các quy phạm pháp luật có mối quan hệ nội tại, thống nhất với nhau được phân định thành các ngành luật và các chế định pháp luật, thể hiện ra bên ngoài bằng các văn bản quy phạm pháp luật do cơ quan nhà nước có thẩm quyền ban hành theo trình tự, thủ tục luật định.",
+            "Là tổng thể các văn bản quy phạm pháp luật do Quốc hội ban hành.",
+            "Là tập hợp các quy phạm pháp luật và các án lệ, tập quán pháp được nhà nước thừa nhận."
+        ],
+        "answer": 1,
+        "explanation": "Hệ thống pháp luật là tổng thể các quy phạm pháp luật có mối quan hệ nội tại, thống nhất với nhau được phân định thành các ngành luật và các chế định pháp luật, thể hiện ra bên ngoài bằng các văn bản quy phạm pháp luật do cơ quan nhà nước có thẩm quyền ban hành theo trình tự, thủ tục luật định."
+    },
+    {
+        "id": "114",
+        "question": "Cấu trúc bên trong của pháp luật được phân chia thành các cấp độ từ hẹp đến rộng theo thứ tự nào?",
+        "options": [
+            "Chế định pháp luật, Ngành luật, Quy phạm pháp luật",
+            "Ngành luật, Chế định pháp luật, Quy phạm pháp luật",
+            "Quy phạm pháp luật, Ngành luật, Chế định pháp luật",
+            "Quy phạm pháp luật, Chế định pháp luật, Ngành luật"
+        ],
+        "answer": 3,
+        "explanation": "Cấu trúc bên trong của pháp luật gồm các cấp độ từ hẹp đến rộng là: quy phạm pháp luật, chế định pháp luật và ngành luật."
+    },
+    {
+        "id": "115",
+        "question": "Căn cứ chủ yếu để phân định các ngành luật trong hệ thống pháp luật là gì?",
+        "options": [
+            "Hình thức bên ngoài và đối tượng điều chỉnh",
+            "Đối tượng điều chỉnh và phương pháp điều chỉnh",
+            "Tính chất của cơ quan ban hành và phương pháp điều chỉnh",
+            "Chủ thể tham gia quan hệ và chế độ chính trị"
+        ],
+        "answer": 1,
+        "explanation": "Để phân biệt ngành luật này với ngành luật khác thường dựa vào hai căn cứ là đối tượng điều chỉnh và phương pháp điều chỉnh."
+    },
+    {
+        "id": "116",
+        "question": "Nguồn của Luật Hiến pháp bao gồm:",
+        "options": [
+            "Chỉ có Hiến pháp và các Luật do Quốc hội ban hành.",
+            "Hiến pháp, các luật khác của Quốc hội ban hành, và một số nghị quyết của Quốc hội có chứa đựng những quy phạm pháp luật của ngành luật Hiến pháp.",
+            "Hiến pháp, các văn bản dưới luật của Chính phủ.",
+            "Hiến pháp, các văn bản quy phạm pháp luật do Tòa án nhân dân tối cao ban hành."
+        ],
+        "answer": 1,
+        "explanation": "Nguồn của luật Hiến pháp bao gồm Hiến pháp, các văn bản luật khác của Quốc hội ban hành như Luật bầu cử đại biểu Quốc hội, Luật tổ chức Chính phủ, Luật tổ chức Hội đồng nhân dân và Ủy ban nhân dân, một số nghị quyết của Quốc hội có chứa đựng những quy phạm pháp luật của ngành luật Hiến pháp ."
+    },
+    {
+        "id": "117",
+        "question": "Đối tượng điều chỉnh của Luật Hiến pháp là gì?",
+        "options": [
+            "Các quan hệ tài sản và quan hệ nhân thân có tính chất hàng hoá - tiền tệ.",
+            "Các quan hệ xã hội cơ bản nhất, quan trọng nhất liên quan và chi phối đến toàn bộ mọi mặt đời sống xã hội của một quốc gia.",
+            "Các quan hệ xã hội phát sinh giữa nhà nước với người phạm tội.",
+            "Các quan hệ lao động và các quan hệ xã hội khác có liên quan đến quan hệ lao động."
+        ],
+        "answer": 1,
+        "explanation": "Đối tượng điều chỉnh của luật Hiến pháp là những quan hệ xã hội cơ bản nhất, quan trọng nhất gắn liền với việc xác định chế độ chính trị, chế độ kinh tế, văn hoá, giáo dục, khoa học, công nghệ, địa vị pháp lý của công dân, của tổ chức và hoạt động của bộ máy nhà nước."
+    },
+    {
+        "id": "118",
+        "question": "Phương pháp điều chỉnh đặc thù của Luật Hiến pháp là gì?",
+        "options": [
+            "Phương pháp bình đẳng thỏa thuận và phương pháp áp đặt.",
+            "Phương pháp quyền uy, mệnh lệnh và phục tùng.",
+            "Phương pháp áp đặt và phương pháp định nghĩa.",
+            "Phương pháp tự định đoạt và phương pháp tự chịu trách nhiệm."
+        ],
+        "answer": 2,
+        "explanation": "Ngoài những phương pháp chung, Luật Hiến pháp còn có phương pháp điều chỉnh đặc thù là phương pháp áp đặt và phương pháp định nghĩa."
+    },
+    {
+        "id": "119",
+        "question": "Luật Dân sự là gì?",
+        "options": [
+            "Là ngành luật điều chỉnh các quan hệ tài sản và quan hệ nhân thân trên cơ sở quyền uy, mệnh lệnh của Nhà nước.",
+            "Là ngành luật điều chỉnh các quan hệ tài sản mang tính chất hàng hoá - tiền tệ và các quan hệ nhân thân trên cơ sở bình đẳng, độc lập của các chủ thể tham gia vào các quan hệ đó.",
+            "Là ngành luật điều chỉnh các quan hệ lao động và quan hệ về tài sản giữa vợ và chồng.",
+            "Là ngành luật điều chỉnh các quan hệ xã hội cơ bản nhất về chế độ chính trị và kinh tế."
+        ],
+        "answer": 1,
+        "explanation": "Luật Dân sự là một ngành luật độc lập bao gồm các quy phạm pháp luật điều chỉnh các quan hệ tài sản mang tính chất hàng hoá - tiền tệ và các quan hệ nhân thân trên cơ sở bình đẳng, độc lập của các chủ thể tham gia vào các quan hệ đó."
+    },
+    {
+        "id": "120",
+        "question": "Đối tượng điều chỉnh của ngành Luật Dân sự gồm những nhóm quan hệ xã hội nào?",
+        "options": [
+            "Quan hệ về tài sản và quan hệ về tố tụng dân sự.",
+            "Quan hệ về tài sản và quan hệ hôn nhân gia đình.",
+            "Quan hệ về tài sản và quan hệ nhân thân.",
+            "Quan hệ về tài sản có tính chất hàng hóa - tiền tệ và quan hệ chính trị."
+        ],
+        "answer": 2,
+        "explanation": "Đối tượng điều chỉnh của ngành Luật Dân sự gồm có hai nhóm quan hệ xã hội: Quan hệ về tài sản và Quan hệ nhân thân."
+    },
+    {
+        "id": "121",
+        "question": "Điểm nổi bật nhất trong các phương pháp điều chỉnh của Luật Dân sự là gì?",
+        "options": [
+            "Phương pháp mệnh lệnh, áp đặt.",
+            "Phương pháp quyền uy, phục tùng.",
+            "Phương pháp độc lập, bình đẳng về địa vị pháp lý, tôn trọng quyền tự định đoạt.",
+            "Phương pháp tập trung quyền lực vào một bên chủ thể."
+        ],
+        "answer": 2,
+        "explanation": "Các chủ thể tham gia các quan hệ dân sự độc lập, bình đẳng với nhau về địa vị pháp lý và tôn trọng quyền tự định đoạt của các chủ thể khi tham gia vào các quan hệ dân sự là điểm nổi bật trong phương pháp điều chỉnh của Luật Dân sự."
+    },
+    {
+        "id": "122",
+        "question": "Trong các loại quan hệ nhân thân do Luật Dân sự điều chỉnh, loại nào có liên quan đến tài sản?",
+        "options": [
+            "Họ tên, danh dự, uy tín, nhân phẩm của cá nhân.",
+            "Quyền tác giả, quyền sở hữu công nghiệp.",
+            "Quyền được bảo đảm an sinh xã hội.",
+            "Quyền được sống trong môi trường trong lành."
+        ],
+        "answer": 1,
+        "explanation": "Quan hệ nhân thân có liên quan đến tài sản như: quyền sở hữu trí tuệ, gồm: quyền tác giả, quyền sở hữu công nghiệp (như các phát minh, sáng chế...)."
+    },
+    {
+        "id": "123",
+        "question": "Bộ luật Dân sự năm 2015 đã quy định thời hiệu khởi kiện yêu cầu chia di sản thừa kế đối với bất động sản là bao lâu kể từ thời điểm mở thừa kế?",
+        "options": [
+            "10 năm",
+            "20 năm",
+            "30 năm",
+            "45 ngày"
+        ],
+        "answer": 2,
+        "explanation": "Thời hiệu để người thừa kế yêu cầu chia di sản là 30 năm đối với bất động sản, 10 năm đối với động sản, kể từ thời điểm mở thừa kế."
+    },
+    {
+        "id": "124",
+        "question": "Luật Tố tụng dân sự là gì?",
+        "options": [
+            "Là ngành luật điều chỉnh các quan hệ tài sản và nhân thân.",
+            "Là ngành luật điều chỉnh các quan hệ xã hội phát sinh giữa Tòa án với những người tham gia tố tụng trong quá trình Tòa án giải quyết các vụ việc dân sự.",
+            "Là ngành luật xác định tội phạm và hình phạt.",
+            "Là ngành luật điều chỉnh quan hệ lao động."
+        ],
+        "answer": 1,
+        "explanation": "Luật Tố tụng dân sự là một ngành luật độc lập bao gồm các quy phạm pháp luật điều chỉnh các quan hệ xã hội phát sinh giữa tòa án (là cơ quan tiến hành tố tụng) với những người tham gia tố tụng trong quá trình tòa án giải quyết các vụ việc dân sự ."
+    },
+    {
+        "id": "125",
+        "question": "Nguyên tắc cơ bản nào lần đầu tiên được bổ sung trong Bộ luật Tố tụng dân sự năm 2015 nhằm cụ thể hóa Hiến pháp 2013?",
+        "options": [
+            "Tòa án xét xử tập thể.",
+            "Bảo đảm tranh tụng trong xét xử.",
+            "Tòa án xét xử kịp thời, công bằng, công khai.",
+            "Tòa án xét xử độc lập và chỉ tuân theo pháp luật."
+        ],
+        "answer": 1,
+        "explanation": "Bộ luật Tố tụng dân sự năm 2015 bổ sung nguyên tắc “Bảo đảm tranh tụng trong xét xử” (Điều 24) nhằm cụ thể hóa quy định tại khoản 5 Điều 103 Hiến pháp năm 2013."
+    },
+    {
+        "id": "126",
+        "question": "Luật Hôn nhân và gia đình là gì?",
+        "options": [
+            "Là ngành luật điều chỉnh các quan hệ nhân thân và tài sản giữa vợ và chồng dựa trên nguyên tắc đền bù ngang giá.",
+            "Là ngành luật điều chỉnh các quan hệ hôn nhân và gia đình về nhân thân và tài sản do nhà nước ban hành.",
+            "Là ngành luật chỉ điều chỉnh các quan hệ nhân thân giữa vợ và chồng.",
+            "Là ngành luật điều chỉnh các quan hệ xã hội trong lĩnh vực hôn nhân và gia đình bằng phương pháp quyền uy, mệnh lệnh."
+        ],
+        "answer": 1,
+        "explanation": "Luật Hôn nhân và gia đình là một ngành luật độc lập bao gồm các quy phạm pháp luật do nhà nước ban hành nhằm điều chỉnh các quan hệ hôn nhân và gia đình về nhân thân và tài sản."
+    },
+    {
+        "id": "127",
+        "question": "Theo Luật Hôn nhân và gia đình năm 2014, nam nữ kết hôn với nhau cần phải tuân theo điều kiện về độ tuổi nào?",
+        "options": [
+            "Nam từ đủ 18 tuổi trở lên, nữ từ đủ 18 tuổi trở lên.",
+            "Nam từ đủ 20 tuổi trở lên, nữ từ đủ 20 tuổi trở lên.",
+            "Nam từ đủ 20 tuổi trở lên, nữ từ đủ 18 tuổi trở lên.",
+            "Nam từ đủ 18 tuổi trở lên, nữ từ đủ 16 tuổi trở lên."
+        ],
+        "answer": 2,
+        "explanation": "Nam từ đủ 20 tuổi trở lên, nữ từ đủ 18 tuổi trở lên."
+    },
+    {
+        "id": "128",
+        "question": "Luật Hôn nhân và gia đình năm 2014 quy định trường hợp nào sau đây không có quyền yêu cầu ly hôn?",
+        "options": [
+            "Vợ hoặc chồng.",
+            "Cha, mẹ, người thân thích khác khi vợ, chồng bị bệnh tâm thần.",
+            "Chồng trong trường hợp vợ đang có thai, sinh con hoặc đang nuôi con dưới 12 tháng tuổi.",
+            "Cả hai vợ chồng cùng yêu cầu."
+        ],
+        "answer": 2,
+        "explanation": "Chồng không có quyền yêu cầu ly hôn trong trường hợp vợ đang có thai, sinh con hoặc đang nuôi con dưới 12 tháng tuổi."
+    },
+    {
+        "id": "129",
+        "question": "Luật Hình sự là gì?",
+        "options": [
+            "Là ngành luật xác định những hành vi nguy hiểm nào là tội phạm và đồng thời quy định hình phạt đối với tội phạm ấy.",
+            "Là ngành luật điều chỉnh các quan hệ xã hội phát sinh giữa người phạm tội và bị hại.",
+            "Là ngành luật quy định các biện pháp xử lý hành chính đối với hành vi vi phạm pháp luật.",
+            "Là ngành luật điều chỉnh các quan hệ quản lý hành chính nhà nước."
+        ],
+        "answer": 0,
+        "explanation": "Luật Hình sự là một ngành luật độc lập bao gồm hệ thống các quy phạm pháp luật xác định những hành vi nguy hiểm nào là tội phạm, đồng thời quy định hình phạt đối với tội phạm ấy."
+    },
+    {
+        "id": "130",
+        "question": "Phương pháp điều chỉnh đặc trưng của ngành Luật Hình sự là gì?",
+        "options": [
+            "Phương pháp bình đẳng, thỏa thuận.",
+            "Phương pháp mệnh lệnh, áp đặt (quyền uy, phục tùng).",
+            "Phương pháp tự định đoạt của các chủ thể.",
+            "Phương pháp khuyến khích, giáo dục."
+        ],
+        "answer": 1,
+        "explanation": "Phương pháp điều chỉnh của ngành luật Hình sự là phương pháp quyền uy, mệnh lệnh và phục tùng."
+    },
+    {
+        "id": "131",
+        "question": "Theo nguyên tắc cá thể hóa trách nhiệm hình sự, chủ thể của tội phạm chỉ có thể là:",
+        "options": [
+            "Cá nhân và pháp nhân thương mại.",
+            "Cá nhân (mà không có tổ chức).",
+            "Tổ chức và pháp nhân thương mại.",
+            "Cá nhân và tổ chức có năng lực trách nhiệm pháp lý."
+        ],
+        "answer": 1,
+        "explanation": "Nguyên tắc cá thể hóa trách nhiệm hình sự: người phạm tội phải chịu trách nhiệm hình sự bởi những gì do họ gây ra, do đó chủ thể của tội phạm chỉ có thể là cá nhân mà không có tổ chức."
+    },
+    {
+        "id": "132",
+        "question": "Luật Lao động là gì?",
+        "options": [
+            "Là ngành luật độc lập điều chỉnh quan hệ lao động và quan hệ tài sản.",
+            "Là ngành luật độc lập điều chỉnh quan hệ lao động và những quan hệ xã hội khác có liên quan đến quan hệ lao động.",
+            "Là ngành luật điều chỉnh quan hệ lao động trên cơ sở mệnh lệnh áp đặt.",
+            "Là ngành luật điều chỉnh quan hệ tuyển chọn và sử dụng sức lao động của người lao động."
+        ],
+        "answer": 1,
+        "explanation": "Luật Lao động là một ngành luật độc lập bao gồm những quy phạm pháp luật điều chỉnh quan hệ lao động và những quan hệ xã hội khác có liên quan đến quan hệ lao động."
+    },
+    {
+        "id": "133",
+        "question": "Theo Bộ luật Lao động 2019, tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường được điều chỉnh theo lộ trình cho đến khi đủ bao nhiêu tuổi đối với lao động nam và lao động nữ?",
+        "options": [
+            "Nam đủ 60 tuổi, nữ đủ 55 tuổi.",
+            "Nam đủ 62 tuổi, nữ đủ 60 tuổi.",
+            "Nam đủ 65 tuổi, nữ đủ 60 tuổi.",
+            "Nam đủ 60 tuổi, nữ đủ 60 tuổi."
+        ],
+        "answer": 1,
+        "explanation": "Tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường được điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035."
+    },
+    {
+        "id": "134",
+        "question": "Theo Bộ luật Lao động 2019, hình thức hợp đồng lao động nào đã được bãi bỏ so với Bộ luật Lao động 2012?",
+        "options": [
+            "Hợp đồng lao động không xác định thời hạn.",
+            "Hợp đồng lao động xác định thời hạn.",
+            "Hợp đồng lao động mùa vụ hoặc theo một công việc có thời hạn dưới 12 tháng.",
+            "Hợp đồng lao động thông qua phương tiện điện tử."
+        ],
+        "answer": 2,
+        "explanation": "Bộ luật Lao động 2019 đã bỏ nội dung về hợp đồng mùa vụ hoặc theo một công việc có thời hạn dưới 12 tháng, thay vào đó chỉ còn 02 loại hợp đồng là hợp đồng lao động không xác định thời hạn và hợp đồng lao động xác định thời hạn."
+    },
+    {
+        "id": "135",
+        "question": "Luật Hành chính là gì?",
+        "options": [
+            "Là ngành luật điều chỉnh các quan hệ xã hội phát sinh trong quá trình Tòa án xét xử.",
+            "Là ngành luật điều chỉnh những quan hệ xã hội phát sinh trong quá trình tổ chức và thực hiện hoạt động chấp hành và điều hành của các cơ quan nhà nước có thẩm quyền.",
+            "Là ngành luật điều chỉnh quan hệ về tài sản và hợp đồng dân sự.",
+            "Là ngành luật điều chỉnh các quan hệ nhân thân giữa vợ và chồng."
+        ],
+        "answer": 1,
+        "explanation": "Luật Hành chính là một ngành luật độc lập bao gồm các quy phạm pháp luật điều chỉnh những quan hệ xã hội phát sinh trong quá trình tổ chức và thực hiện hoạt động chấp hành và điều hành của các cơ quan nhà nước có thẩm quyền, các tổ chức xã hội được nhà nước trao quyền quản lý nhà nước trên các lĩnh vực kinh tế, văn hóa, xã hội ."
+    },
+    {
+        "id": "136",
+        "question": "Đặc trưng của phương pháp điều chỉnh của Luật Hành chính là gì?",
+        "options": [
+            "Tính tự định đoạt, bình đẳng.",
+            "Tính mệnh lệnh được hình thành từ quan hệ \"quyền lực - phục tùng\".",
+            "Tính hỗ trợ, thỏa thuận.",
+            "Tính giáo dục, thuyết phục là chủ yếu."
+        ],
+        "answer": 1,
+        "explanation": "Đặc trưng của phương pháp điều chỉnh của Luật Hành chính là tính mệnh lệnh được hình thành từ quan hệ “quyền lực - phục tùng”."
+    },
+    {
+        "id": "137",
+        "question": "Hành vi vi phạm hành chính có đặc điểm cơ bản là:",
+        "options": [
+            "Là hành vi trái pháp luật xâm phạm quy tắc quản lý nhà nước mà đã cấu thành tội phạm hình sự.",
+            "Là hành vi do cá nhân, tổ chức thực hiện một cách cố ý hoặc vô ý, xâm phạm các quy tắc quản lý nhà nước mà không phải là tội phạm hình sự và theo quy định của pháp luật phải bị xử lý hành chính.",
+            "Là hành vi vi phạm nội quy, quy chế của cơ quan, đơn vị.",
+            "Là hành vi xâm hại tới quan hệ tài sản và quan hệ nhân thân được pháp luật dân sự điều chỉnh."
+        ],
+        "answer": 1,
+        "explanation": "Vi phạm hành chính là hành vi do cá nhân, tổ chức thực hiện một cách cố ý hoặc vô ý, xâm phạm các quy tắc quản lý nhà nước mà không phải là tội phạm hình sự và theo quy định của pháp luật phải bị xử lý hành chính."
+    },
+    {
+        "id": "138",
+        "question": "Các hình thức xử phạt vi phạm hành chính bao gồm:",
+        "options": [
+            "Hình phạt chính (Cảnh cáo, Phạt tiền) và Hình phạt bổ sung (Tước quyền sử dụng giấy phép, Tịch thu tang vật...).",
+            "Hình thức xử phạt chính (Cảnh cáo, Phạt tiền) và Các biện pháp xử lý hành chính khác (Giáo dục tại xã, phường, thị trấn...).",
+            "Chỉ có Hình phạt chính (Cảnh cáo, Phạt tiền).",
+            "Phạt tiền, Cải tạo không giam giữ và Tịch thu tài sản."
+        ],
+        "answer": 0,
+        "explanation": "Xử phạt VPHC bao gồm Hình thức xử phạt chính: cảnh cáo, phạt tiền. Hình thức xử phạt bổ sung: tước quyền sử dụng giấy phép, chứng chỉ hành nghề, tịch thu tang vật, phương tiện được sử dụng để VPHC, tạm giữ phương tiện vi phạm... ."
+    },
+    {
+        "id": "139",
+        "question": "Quy phạm pháp luật là gì?",
+        "options": [
+            "Là văn bản do cơ quan nhà nước có thẩm quyền ban hành.",
+            "Là quy tắc xử sự mang tính bắt buộc chung cho mọi người và được nhà nước bảo đảm thực hiện trong các trường hợp cụ thể.",
+            "Là tập hợp các chế định pháp luật trong một ngành luật.",
+            "Là quy tắc xử sự được hình thành trong quá trình hoạt động của con người."
+        ],
+        "answer": 1,
+        "explanation": "Quy phạm pháp luật là quy tắc xử sự mang tính bắt buộc chung cho mọi người và được nhà nước bảo đảm thực hiện trong các trường hợp cụ thể, thể hiện ý chí của giai cấp thống trị do nhà nước ban hành."
+    },
+    {
+        "id": "140",
+        "question": "Nếu không có người thừa kế đang quản lý di sản là bất động sản khi thời hiệu yêu cầu chia di sản đã hết (30 năm), thì di sản đó sẽ được giải quyết như thế nào theo Bộ luật Dân sự 2015?",
+        "options": [
+            "Thuộc về Nhà nước.",
+            "Thuộc về người đang chiếm hữu di sản đó theo quy định về chiếm hữu.",
+            "Cả A và B đều đúng tùy thuộc vào từng trường hợp cụ thể.",
+            "Được chia đều cho các thành viên còn lại của gia đình người chết."
+        ],
+        "answer": 2,
+        "explanation": "Hết thời hạn 30 năm thì di sản thuộc về người thừa kế đang quản lý di sản đó; Trường hợp không có người thừa kế đang quản lý di sản thì di sản được giải quyết như sau: Thuộc quyền sở hữu của người đang chiếm hữu theo quy định tại Điều 236 của Bộ luật này; Di sản thuộc về Nhà nước, nếu không có người chiếm hữu quy định tại tại Điều 236 Bộ luật này ."
+    },
+    {
+        "id": "141",
+        "question": "Luật Hôn nhân và gia đình năm 2014 quy định con từ đủ bao nhiêu tuổi trở lên thì phải xem xét nguyện vọng của con khi cha mẹ ly hôn?",
+        "options": [
+            "Từ đủ 05 tuổi trở lên.",
+            "Từ đủ 07 tuổi trở lên.",
+            "Từ đủ 09 tuổi trở lên.",
+            "Từ đủ 12 tuổi trở lên."
+        ],
+        "answer": 1,
+        "explanation": "Điểm mới của Luật Hôn nhân và Gia đình 2014 là nếu con từ đủ 07 tuổi trở lên thì phải xem xét nguyện vọng của con thay vì phải từ đủ 09 tuổi như Luật Hôn nhân và Gia đình 2000."
+    },
+    {
+        "id": "142",
+        "question": "Chế định pháp luật là gì?",
+        "options": [
+            "Là một quy phạm pháp luật cụ thể.",
+            "Là một nhóm quy phạm pháp luật điều chỉnh một nhóm quan hệ xã hội cùng loại, có tính chất nội tại trong một ngành luật.",
+            "Là tổng hợp các quy phạm pháp luật điều chỉnh một loại quan hệ xã hội có cùng tính chất.",
+            "Là văn bản quy phạm pháp luật có hiệu lực pháp lý cao nhất."
+        ],
+        "answer": 1,
+        "explanation": "Chế định pháp luật là một nhóm quy phạm pháp luật điều chỉnh một nhóm quan hệ xã hội cùng loại, có tính chất nội tại trong một ngành luật."
+    },
+    {
+        "id": "143",
+        "question": "Quan hệ nào sau đây không phải là đối tượng điều chỉnh của Luật Dân sự?",
+        "options": [
+            "Quan hệ tặng cho tài sản.",
+            "Quan hệ thừa kế tài sản.",
+            "Quan hệ giữa vợ và chồng về tài sản.",
+            "Quan hệ giữa người lao động và người sử dụng lao động về việc làm."
+        ],
+        "answer": 3,
+        "explanation": "Quan hệ giữa người lao động và người sử dụng lao động về việc làm là quan hệ lao động, thuộc đối tượng điều chỉnh của Luật Lao động ."
+    },
+    {
+        "id": "144",
+        "question": "Theo Bộ luật Lao động 2019, người lao động có thể đơn phương chấm dứt hợp đồng lao động không cần lý do nếu báo trước trong thời hạn ít nhất bao nhiêu ngày đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng?",
+        "options": [
+            "Ít nhất 3 ngày làm việc.",
+            "Ít nhất 30 ngày.",
+            "Ít nhất 45 ngày.",
+            "Ít nhất 15 ngày."
+        ],
+        "answer": 1,
+        "explanation": "Người lao động có quyền đơn phương chấm dứt hợp đồng lao động mà không cần nêu lý do, nhưng phải báo trước ít nhất 30 ngày nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng."
+    },
+    {
+        "id": "145",
+        "question": "Theo Luật Hôn nhân và gia đình 2014, việc kết hôn của công dân Việt Nam với nhau đăng ký tại cơ quan nào?",
+        "options": [
+            "Tòa án nhân dân cấp huyện.",
+            "Tòa án nhân dân cấp tỉnh.",
+            "UBND cấp xã nơi cư trú của một trong hai bên nam, nữ.",
+            "Sở Tư pháp."
+        ],
+        "answer": 2,
+        "explanation": "Kết hôn giữa công dân Việt Nam với nhau đăng ký tại UBND cấp xã nơi đăng ký thường trú của một trong hai bên nam, nữ."
+    },
+    {
+        "id": "146",
+        "question": "Theo Bộ luật Tố tụng dân sự 2015, Tòa án có thể áp dụng biện pháp khẩn cấp tạm thời nào mới so với các quy định trước đây?",
+        "options": [
+            "Tạm đình chỉ giải quyết vụ án.",
+            "Cấm xuất cảnh đối với người có nghĩa vụ.",
+            "Kê biên tài sản đang tranh chấp.",
+            "Cấm thay đổi hiện trạng tài sản đang tranh chấp."
+        ],
+        "answer": 1,
+        "explanation": "Bộ luật Tố tụng dân sự năm 2015 đã bổ sung quy định biện pháp khẩn cấp tạm thời mới là “Cấm xuất cảnh đối với người có nghĩa vụ”."
+    },
+    {
+        "id": "147",
+        "question": "Đặc trưng của quan hệ pháp luật hành chính là gì?",
+        "options": [
+            "Quyền và nghĩa vụ của các bên luôn gắn với hoạt động kinh doanh, thương mại.",
+            "Một bên trong quan hệ phải là chủ thể được sử dụng quyền lực nhà nước và có quyền nhân danh nhà nước để đơn phương đưa ra những mệnh lệnh.",
+            "Các bên tham gia bình đẳng về địa vị pháp lý, tôn trọng quyền tự định đoạt của nhau.",
+            "Các tranh chấp phát sinh được giải quyết chủ yếu theo thủ tục trọng tài."
+        ],
+        "answer": 1,
+        "explanation": "Đặc trưng của quan hệ pháp luật hành chính là một bên phải là chủ thể được sử dụng quyền lực nhà nước (chủ thể bắt buộc) và có quyền nhân danh nhà nước để đơn phương đưa ra những mệnh lệnh buộc phía bên kia phải thực hiện."
+    },
+    {
+        "id": "148",
+        "question": "Theo Bộ luật Dân sự 2015, Tòa án có được từ chối yêu cầu giải quyết vụ, việc dân sự vì lý do chưa có điều luật để áp dụng không?",
+        "options": [
+            "Được từ chối nếu không có quy định luật áp dụng.",
+            "Được từ chối nếu các bên không có thỏa thuận.",
+            "Không được từ chối.",
+            "Được từ chối nếu việc giải quyết trái với lẽ công bằng."
+        ],
+        "answer": 2,
+        "explanation": "Tòa án không được từ chối yêu cầu giải quyết vụ, việc dân sự vì lý do chưa có điều luật để áp dụng. Trong trường hợp này, quy định về áp dụng tập quán, tương tự pháp luật, nguyên tắc cơ bản của pháp luật dân sự, án lệ và lẽ công bằng được áp dụng để xem xét, giải quyết vụ việc."
+    },
+    {
+        "id": "149",
+        "question": "Theo Bộ luật Lao động 2019, người sử dụng lao động có trách nhiệm trả các loại phí liên quan đến việc mở và duy trì tài khoản ngân hàng để trả lương cho người lao động không?",
+        "options": [
+            "Người lao động phải tự trả.",
+            "Người sử dụng lao động và người lao động thỏa thuận.",
+            "Người sử dụng lao động có trách nhiệm trả.",
+            "Ngân hàng phải chịu trách nhiệm trả."
+        ],
+        "answer": 2,
+        "explanation": "Việc trả các loại phí liên quan đến mở tài khoản và phí chuyển tiền là trách nhiệm bắt buộc của người sử dụng lao động."
+    },
+    {
+        "id": "150",
+        "question": "Trong hệ thống pháp luật Việt Nam hiện nay, hình thức bên ngoài (nguồn của pháp luật) nào được thừa nhận và ban hành?",
+        "options": [
+            "Tập quán pháp.",
+            "Tiền lệ pháp (Án lệ).",
+            "Văn bản quy phạm pháp luật.",
+            "Cả A và B."
+        ],
+        "answer": 2,
+        "explanation": "Hình thức pháp luật Việt Nam ta hiện nay chỉ thừa nhận và ban hành PL từ 1 nguồn duy nhất đó là văn bản quy phạm PL, ko thừa nhận tập quán pháp và tiền lệ pháp."
+    },
+    {
+        "id": "151",
+        "question": "Theo Bộ luật Hình sự 2015, việc giảm hình phạt tử hình được áp dụng đối với người từ bao nhiêu tuổi trở lên khi phạm tội hoặc khi xét xử?",
+        "options": [
+            "Người từ 75 tuổi trở lên.",
+            "Người từ 70 tuổi trở lên.",
+            "Người từ 65 tuổi trở lên.",
+            "Người từ 60 tuổi trở lên."
+        ],
+        "answer": 0,
+        "explanation": "Bộ luật Hình sự 2015 bổ sung đối tượng không áp dụng hình phạt tử hình là người từ 75 tuổi trở lên khi phạm tội hoặc khi xét xử."
+    },
+    {
+        "id": "152",
+        "question": "Theo Luật Hôn nhân và gia đình 2014, thỏa thuận xác lập chế độ tài sản của vợ chồng phải được lập khi nào?",
+        "options": [
+            "Trong thời kỳ hôn nhân.",
+            "Trước hoặc trong thời kỳ hôn nhân.",
+            "Sau khi kết hôn nhưng trước khi ly hôn.",
+            "Trước khi kết hôn."
+        ],
+        "answer": 3,
+        "explanation": "Trong trường hợp hai bên kết hôn lựa chọn chế độ tài sản theo thỏa thuận thì thỏa thuận này phải được lập trước khi kết hôn, bằng hình thức văn bản có công chứng hoặc chứng thực."
+    },
+    {
+        "id": "153",
+        "question": "Theo Bộ luật Tố tụng dân sự 2015, trong quá trình giải quyết vụ án dân sự, khi Kiểm sát viên được Viện trưởng phân công tham gia phiên tòa, phiên họp sơ thẩm mà vắng mặt thì Hội đồng xét xử có tiến hành xét xử hay không?",
+        "options": [
+            "Phải hoãn phiên tòa để chờ Kiểm sát viên.",
+            "Vẫn tiến hành việc xét xử, không hoãn phiên tòa (trừ trường hợp VKS kháng nghị phúc thẩm).",
+            "Tạm ngừng phiên tòa cho đến khi có ý kiến của Viện trưởng Viện kiểm sát.",
+            "Đình chỉ giải quyết vụ án."
+        ],
+        "answer": 1,
+        "explanation": "Quy định đối với trường hợp Kiểm sát viên được Viện trưởng phân công tham gia phiên tòa, phiên họp sơ thẩm... mà vắng mặt thì Hội đồng xét xử vẫn tiến hành việc xét xử, không hoãn phiên tòa, trừ trường hợp VKS kháng nghị phúc thẩm."
+    },
+    {
+        "id": "154",
+        "question": "Theo Bộ luật Lao động 2019, người lao động có quyền đơn phương chấm dứt hợp đồng lao động mà không cần báo trước nếu:",
+        "options": [
+            "Bị người sử dụng lao động yêu cầu làm thêm giờ.",
+            "Bị quấy rối tình dục tại nơi làm việc.",
+            "Không được bố trí đúng công việc, địa điểm làm việc trong vòng 30 ngày kể từ ngày giao kết hợp đồng.",
+            "Người sử dụng lao động yêu cầu chuyển sang làm công việc khác so với hợp đồng."
+        ],
+        "answer": 1,
+        "explanation": "Người lao động có quyền đơn phương chấm dứt hợp đồng mà không cần báo trước, ví dụ như: Bị quấy rối tình dục tại nơi làm việc."
+    },
+    {
+        "id": "155",
+        "question": "Cơ quan hành chính nhà nước có thẩm quyền chung bao gồm:",
+        "options": [
+            "Quốc hội và Chính phủ.",
+            "Chính phủ và Ủy ban nhân dân các cấp.",
+            "Chính phủ, các Bộ và cơ quan ngang Bộ.",
+            "Tòa án nhân dân và Viện kiểm sát nhân dân."
+        ],
+        "answer": 1,
+        "explanation": "Cơ quan hành chính nhà nước có thẩm quyền chung bao gồm Chính phủ và Ủy ban nhân dân các cấp."
+    },
+    {
+        "id": "156",
+        "question": "Theo Bộ luật Dân sự 2015, lãi suất trong hợp đồng vay do các bên thỏa thuận không được vượt quá bao nhiêu phần trăm/năm của khoản tiền vay (trừ trường hợp luật khác có quy định khác)?",
+        "options": [
+            "15%/năm",
+            "18%/năm",
+            "20%/năm",
+            "25%/năm"
+        ],
+        "answer": 2,
+        "explanation": "Lãi suất theo thỏa thuận không được vượt quá 20%/năm của khoản tiền vay."
+    },
+    {
+        "id": "157",
+        "question": "Các kiểu nhà nước trong lịch sử phát triển xã hội loài người, tương ứng với mỗi hình thái kinh tế - xã hội trong xã hội có giai cấp là:",
+        "options": [
+            "Nhà nước chủ nô, nhà nước tư bản, nhà nước phong kiến, nhà nước xã hội chủ nghĩa.",
+            "Nhà nước chủ nô, nhà nước phong kiến, nhà nước tư sản, nhà nước xã hội chủ nghĩa.",
+            "Nhà nước cộng sản nguyên thủy, nhà nước chủ nô, nhà nước phong kiến, nhà nước tư sản.",
+            "Nhà nước tư bản, nhà nước xã hội chủ nghĩa, nhà nước đế quốc, nhà nước dân chủ."
+        ],
+        "answer": 1,
+        "explanation": "Trong lịch sử phát triển xã hội loài người đã trải qua những kiểu nhà nước khác nhau, đó là: Kiểu nhà nước chủ nô, Kiểu nhà nước phong kiến, Kiểu nhà nước tư sản, Và kiểu nhà nước xã hội chủ nghĩa"
+    }
 ];
 
-const QuizScreen = ({ navigation }) => {
+const QuizScreen = ({ navigation, route }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
@@ -1825,14 +2377,38 @@ const QuizScreen = ({ navigation }) => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [answerHistory, setAnswerHistory] = useState([]); // Thống kê đúng/sai
+  const [wrongAnswers, setWrongAnswers] = useState([]); // Lưu câu trả lời sai
 
   useEffect(() => {
-    const shuffledQuestions = shuffleQuestions(questionsData);
+    const { examSetId } = route.params || {};
+    
+    let questionsToUse = questionsData;
+    
+    // If examSetId is provided, use questions from that specific topic
+    if (examSetId) {
+      const topicRanges = {
+        1: { start: 0, end: 45 },   // Luật Hôn nhân và Gia đình
+        2: { start: 45, end: 80 },  // Luật Lao động  
+        3: { start: 80, end: 110 }, // Luật Hành chính
+        4: { start: 110, end: 142 }, // Luật Dân sự
+        5: { start: 142, end: 167 }, // Luật Hình sự
+        6: { start: 167, end: 197 }, // Luật Đất đai và Nhà ở
+        7: { start: 0, end: 197 }    // Bộ đề Tổng hợp - tất cả câu hỏi
+      };
+      
+      const range = topicRanges[examSetId];
+      if (range) {
+        questionsToUse = questionsData.slice(range.start, Math.min(range.end, questionsData.length));
+      }
+    }
+    
+    const shuffledQuestions = shuffleQuestions(questionsToUse);
     setQuestions(shuffledQuestions);
     if (shuffledQuestions.length > 0) {
       setShuffledAnswers(shuffleAnswers(shuffledQuestions[0]));
     }
-  }, []);
+  }, [route.params]);
 
   const shuffleQuestions = (questionsArray) => {
     const newArray = [...questionsArray];
@@ -1852,6 +2428,30 @@ const QuizScreen = ({ navigation }) => {
     setIsAnswered(true);
     setShowExplanation(true);
 
+    // Ghi lại lịch sử trả lời
+    const answerRecord = {
+      questionId: questions[currentQuestionIndex]?.id,
+      question: questions[currentQuestionIndex]?.question,
+      selectedAnswer: answer.text,
+      isCorrect: answer.isCorrect,
+      correctAnswer: questions[currentQuestionIndex]?.options[questions[currentQuestionIndex]?.answer]
+    };
+    
+    setAnswerHistory([...answerHistory, answerRecord]);
+
+    // Lưu câu trả lời sai vào wrongAnswers
+    if (!answer.isCorrect) {
+      const wrongQuestion = {
+        id: questions[currentQuestionIndex]?.id,
+        question: questions[currentQuestionIndex]?.question,
+        options: questions[currentQuestionIndex]?.options,
+        correctAnswer: questions[currentQuestionIndex]?.options[questions[currentQuestionIndex]?.answer],
+        explanation: questions[currentQuestionIndex]?.explanation,
+        userAnswer: answer.text
+      };
+      setWrongAnswers([...wrongAnswers, wrongQuestion]);
+    }
+
     if (answer.isCorrect) {
       setCorrectAnswers(correctAnswers + 1);
     }
@@ -1869,6 +2469,8 @@ const QuizScreen = ({ navigation }) => {
       navigation.navigate('Result', {
         correctAnswers,
         totalQuestions: questions.length,
+        answerHistory, // Truyền lịch sử trả lời
+        wrongAnswers, // Truyền các câu trả lời sai
       });
     }
   };
@@ -1903,14 +2505,15 @@ const QuizScreen = ({ navigation }) => {
 
   if (questions.length === 0) {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.loadingText}>Đang tải câu hỏi...</Text>
-      </View>
+      </SafeAreaView>
     );
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.container}>
       <View style={styles.content}>
         <View style={styles.progressContainer}>
           <Text style={styles.progressText}>
@@ -1968,6 +2571,7 @@ const QuizScreen = ({ navigation }) => {
         )}
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -2126,3 +2730,5 @@ const styles = StyleSheet.create({
 });
 
 export default QuizScreen;
+export { questionsData };
+

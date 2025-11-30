@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   const handleStartQuiz = () => {
-    navigation.navigate('Quiz');
+    navigation.navigate('ExamList');
   };
 
   return (
